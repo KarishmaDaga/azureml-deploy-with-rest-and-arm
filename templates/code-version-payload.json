@@ -1,0 +1,77 @@
+{
+    "properties": {
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "workspaceName": {
+            "type": "string",
+            "defaultValue": "karishmadev",
+            "metadata": {
+              "description": "Specifies the name of the Azure Machine Learning Workspace which will contain this compute."
+            }
+          },
+          "storageAccountName": {
+            "type": "string",
+            "defaultValue": "karishmadev7017615800"
+          },
+          "defaultStorageContainer": {
+            "type": "string",
+            "defaultValue": "azureml-blobstore-50392a1c-ba6b-4c86-8665-635c8bae90a7"
+          },
+          "codeAssetName": {
+            "defaultValue": "score-sklearn",
+            "type": "string",
+            "metadata": {
+              "description": "Specifies the name of the Azure Machine Learning code asset which will be created or updated."
+            }
+          },
+          "codeAssetVersion": {
+            "defaultValue": "1",
+            "type": "string",
+            "metadata": {
+              "description": "Specifies the version of the Azure Machine Learning code asset which will be created or updated."
+            }
+          },
+          "codeUri": {
+            "defaultValue": "https://karishmadev7017615800.blob.core.windows.net/azureml-blobstore-50392a1c-ba6b-4c86-8665-635c8bae90a7/score",
+            "type": "string",
+            "metadata": {
+              "description": "Specifies the location of the Azure Machine Learning code asset in a storage account."
+            }
+          },
+          "codeAssetDescription": {
+            "defaultValue": "This is a test description for a code asset created by an ARM template",
+            "type": "string"
+          },
+          "isAnonymous": {
+            "defaultValue": false,
+            "type": "bool",
+            "metadata": {
+              "description": "If the name version are system generated (anonymous registration)."
+            }
+          }
+        },
+        "resources": [
+          {
+            "type": "Microsoft.MachineLearningServices/workspaces/codes/versions",
+            "apiVersion": "2021-10-01",
+            "name": "[concat(parameters('workspaceName'), '/', parameters('codeAssetName'), '/', parameters('codeAssetVersion'))]",
+            "properties": {
+              "description": "[parameters('codeAssetDescription')]",
+              "codeUri": "[parameters('codeUri')]",
+              "isAnonymous": "[parameters('isAnonymous')]",
+              "properties": {},
+              "tags": {}
+            }
+          }
+        ]
+      },
+      "parameters": {
+        "location": {
+          "value": "centraluseuap"
+        }
+      }
+    }
+  }

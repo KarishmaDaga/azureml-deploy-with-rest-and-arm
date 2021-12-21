@@ -1,0 +1,273 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "workspaceName": {
+        "type": "string",
+        "metadata": {
+          "description": "Specifies the name of the Azure Machine Learning Workspace which will contain this compute."
+        }
+      },
+      "location": {
+        "type": "string"
+      },
+      "appInsightsEnabled": {
+        "type": "bool",
+        "defaultValue": false
+      },
+      "onlineEndpointName": {
+        "type": "string",
+        "metadata": {
+          "description": "Specifies the name of the Azure Machine Learning online endpoint which will be deployed."
+        }
+      },
+      "onlineDeploymentName": {
+        "defaultValue": "blue",
+        "type": "string",
+        "metadata": {
+          "description": "Specifies the name of the Azure Machine Learning online endpoint which will be deployed."
+        }
+      },
+      "onlineEndpointDescription": {
+        "defaultValue": "This is an online endpoint deployment created by an ARM template",
+        "type": "string"
+      },
+      "onlineDeploymentTags": {
+        "defaultValue": {
+          "tag1": "value1",
+          "tag2": "value2",
+          "tag3": "value3"
+        },
+        "type": "object"
+      },
+      "codeAssetName": {
+        "type": "string"
+      },
+      "codeAssetVersion": {
+        "type": "string",
+        "defaultValue": "1"
+      },
+      "scoringScript": {
+        "type": "string",
+        "defaultValue": "score.py",
+        "metadata": {
+          "description": "The script to execute on startup. eg. 'score.py'"
+        }
+      },
+      "environmentAssetName": {
+        "type": "string"
+      },
+      "environmentAssetVersion": {
+        "type": "string",
+        "defaultValue": "1"
+      },
+      "environmentVariables": {
+        "type": "object",
+        "defaultValue": {
+          "var1": "value1",
+          "var2": "value2",
+          "var3": "value3"
+        }
+      },
+      "modelAssetName": {
+        "type": "string"
+      },
+      "modelAssetVersion": {
+        "type": "string",
+        "defaultValue": "1"
+      },
+      "modelMountPath": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description": "The path to mount the model in custom container."
+        }
+      },
+      "endpointComputeType": {
+        "type": "string",
+        "allowedValues": [
+          "Managed",
+          "Kubernetes",
+          "AzureMLCompute"
+        ]
+      },
+      "instanceType": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description": "Compute instance type."
+        }
+      },
+      "livenessProbeFailureThreshold": {
+        "type": "int",
+        "defaultValue": 30,
+        "metadata": {
+          "description": "The number of failures to allow before returning an unhealthy status."
+        }
+      },
+      "livenessProbeSuccessThreshold": {
+        "type": "int",
+        "defaultValue": 1,
+        "metadata": {
+          "description": "The number of successful probes before returning a healthy status."
+        }
+      },
+      "livenessProbeInitialDelay": {
+        "type": "string",
+        "defaultValue": "PT0S",
+        "metadata": {
+          "description": "The delay before the first probe in ISO 8601 format."
+        }
+      },
+      "livenessProbePeriod": {
+        "type": "string",
+        "defaultValue": "PT10S",
+        "metadata": {
+          "description": "The length of time between probes in ISO 8601 format."
+        }
+      },
+      "livenessProbeTimeout": {
+        "type": "string",
+        "defaultValue": "PT2S",
+        "metadata": {
+          "description": "The probe timeout in ISO 8601 format."
+        }
+      },
+      "readinessProbeFailureThreshold": {
+        "type": "int",
+        "defaultValue": 30,
+        "metadata": {
+          "description": "The number of failures to allow before returning an unhealthy status."
+        }
+      },
+      "readinessProbeSuccessThreshold": {
+        "type": "int",
+        "defaultValue": 1,
+        "metadata": {
+          "description": "The number of successful probes before returning a healthy status."
+        }
+      },
+      "readinessProbeInitialDelay": {
+        "type": "string",
+        "defaultValue": "PT0S",
+        "metadata": {
+          "description": "The delay before the first probe in ISO 8601 format."
+        }
+      },
+      "readinessProbePeriod": {
+        "type": "string",
+        "defaultValue": "PT10S",
+        "metadata": {
+          "description": "The length of time between probes in ISO 8601 format."
+        }
+      },
+      "readinessProbeTimeout": {
+        "type": "string",
+        "defaultValue": "PT2S",
+        "metadata": {
+          "description": "The probe timeout in ISO 8601 format."
+        }
+      },
+      "requestSettingsMaxConcurrentRequestsPerInstance": {
+        "type": "int",
+        "defaultValue": 1,
+        "metadata": {
+          "description": "The number of maximum concurrent requests per node allowed per deployment. Defaults to 1."
+        }
+      },
+      "requestSettingsMaxQueueWait": {
+        "type": "string",
+        "defaultValue": "PT0.5S",
+        "metadata": {
+          "description": "The maximum amount of time a request will stay in the queue in ISO 8601 format. Defaults to 500ms."
+        }
+      },
+      "requestSettingsTimeout": {
+        "type": "string",
+        "defaultValue": "PT5S",
+        "metadata": {
+          "description": "The scoring timeout in ISO 8601 format. Defaults to 5000ms"
+        }
+      },
+      "scaleSettingsScaleType": {
+        "type": "string",
+        "allowedValues": [
+          "Default",
+          "TargetUtilization"
+        ],
+        "defaultValue": "Default"
+      },
+      "targetUtilizationPollingInterval": {
+        "type": "string",
+        "defaultValue": "PT1S",
+        "metadata": {
+          "description": "The polling interval in ISO 8691 format. Only supports duration with precision as low as seconds."
+        }
+      },
+      "targetUtilizationPercentage": {
+        "type": "int",
+        "defaultValue": 70,
+        "metadata": {
+          "description": "Target CPU usage for the autoscaler."
+        }
+      },
+      "targetUtilizationPercentageMinInstances": {
+        "type": "int",
+        "defaultValue": 1,
+        "metadata": {
+          "description": "The minimum number of instances to always be present."
+        }
+      },
+      "targetUtilizationPercentageMaxInstances": {
+        "type": "int",
+        "defaultValue": 1,
+        "metadata": {
+          "description": "The maximum number of instances that the deployment can scale to. The quota will be reserved for max instances."
+        }
+      },
+      "skuName": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+          "description": "The name of the SKU. Ex - P3. It is typically a letter+number code"
+        }
+      },
+      "skuCapacity": {
+        "type": "int",
+        "defaultValue": 1,
+        "metadata": {
+          "description": "If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted."
+        }
+      }
+    },
+    "variables": {
+      "modelAssetResourceId": "[resourceId('Microsoft.MachineLearningServices/workspaces/models/versions', parameters('workspaceName'), parameters('modelAssetName'), parameters('modelAssetVersion'))]",
+      "codeAssetResourceId": "[resourceId('Microsoft.MachineLearningServices/workspaces/codes/versions', parameters('workspaceName'), parameters('codeAssetName'), parameters('codeAssetVersion'))]",
+      "environmentAssetResourceId": "[resourceId('Microsoft.MachineLearningServices/workspaces/environments/versions', parameters('workspaceName'), parameters('environmentAssetName'), parameters('environmentAssetVersion'))]"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.MachineLearningServices/workspaces/onlineEndpoints/deployments",
+        "apiVersion": "2021-10-01",
+        "name": "[concat(parameters('workspaceName'), '/', parameters('onlineEndpointName'),'/', parameters('onlineDeploymentName'))]",
+        "location": "[parameters('location')]",
+        "tags": "[parameters('onlineDeploymentTags')]",
+        "sku": {
+          "name": "[parameters('skuName')]",
+          "capacity": "[parameters('skuCapacity')]"
+        },
+        "properties": {
+          "description": "[parameters('onlineEndpointDescription')]",
+          "codeConfiguration": {
+            "codeId": "[variables('codeAssetResourceId')]",
+            "scoringScript": "[parameters('scoringScript')]"
+          },
+          "environmentId": "[variables('environmentAssetResourceId')]",
+          "appInsightsEnabled": "[parameters('appInsightsEnabled')]",
+          "endpointComputeType": "[parameters('endpointComputeType')]",
+          "model": "[variables('modelAssetResourceId')]",
+          "properties": {}
+        }
+      }
+    ]
+  }
