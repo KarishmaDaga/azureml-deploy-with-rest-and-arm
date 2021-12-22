@@ -7,7 +7,6 @@
       "parameters": {
         "workspaceName": {
           "type": "string",
-          "defaultValue": "karishmadev",
           "metadata": {
             "description": "The name of the Azure Machine Learning Workspace."
           }
@@ -21,7 +20,6 @@
         },
         "modelName": {
           "type": "string",
-          "defaultValue": "sklearn",
           "metadata": {
             "description": "Specifies the name of the Azure Machine Learning model container which will contain this model."
           }
@@ -42,8 +40,7 @@
           }
         },
         "modelUri": {
-          "type": "string",
-          "defaultValue": "azureml://subscriptions/e54229a3-0e6f-40b3-82a1-ae9cda6e2b81/resourceGroups/karishma/workspaces/karishmadev/datastores/workspaceblobstore/paths/model/sklearn_regression_model.pkl"
+          "type": "string"
         }
       },
       "resources": [
