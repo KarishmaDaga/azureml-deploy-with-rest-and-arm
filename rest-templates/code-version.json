@@ -7,21 +7,11 @@
         "parameters": {
           "workspaceName": {
             "type": "string",
-            "defaultValue": "karishmadev",
             "metadata": {
               "description": "Specifies the name of the Azure Machine Learning Workspace which will contain this compute."
             }
           },
-          "storageAccountName": {
-            "type": "string",
-            "defaultValue": "karishmadev7017615800"
-          },
-          "defaultStorageContainer": {
-            "type": "string",
-            "defaultValue": "azureml-blobstore-50392a1c-ba6b-4c86-8665-635c8bae90a7"
-          },
           "codeAssetName": {
-            "defaultValue": "score-sklearn",
             "type": "string",
             "metadata": {
               "description": "Specifies the name of the Azure Machine Learning code asset which will be created or updated."
@@ -35,7 +25,6 @@
             }
           },
           "codeUri": {
-            "defaultValue": "https://karishmadev7017615800.blob.core.windows.net/azureml-blobstore-50392a1c-ba6b-4c86-8665-635c8bae90a7/score",
             "type": "string",
             "metadata": {
               "description": "Specifies the location of the Azure Machine Learning code asset in a storage account."
@@ -67,11 +56,6 @@
             }
           }
         ]
-      },
-      "parameters": {
-        "location": {
-          "value": "centraluseuap"
-        }
       }
     }
   }

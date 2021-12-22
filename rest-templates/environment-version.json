@@ -9,7 +9,7 @@
         "defaultValue": "testEnvironmentImageGA",
         "type": "string"
       },
-      "environmentAssetVersion": {
+      "environmentVersion": {
         "defaultValue": "1",
         "type": "string"
       },
@@ -40,12 +40,14 @@
       {
         "type": "Microsoft.MachineLearningServices/workspaces/environments/versions",
         "apiVersion": "2021-10-01",
-        "name": "[concat(parameters('workspaceName'), '/', parameters('environmentName'), '/', parameters('environmentAssetVersion'))]",
+        "name": "[concat(parameters('workspaceName'), '/', parameters('environmentName'), '/', parameters('environmentVersion'))]",
         "properties": {
           "isAnonymous": "[parameters('isAnonymous')]",
           "description": "[parameters('environmentDescription')]",
           "image": "[parameters('dockerImage')]",
-          "condaFile": "[parameters('condaFile')]"
+          "condaFile": "[parameters('condaFile')]",
+          "properties": {},
+          "tags": {}
         }
       }
     ]

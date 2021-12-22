@@ -61,27 +61,12 @@
         "type": "string",
         "defaultValue": "1"
       },
-      "environmentVariables": {
-        "type": "object",
-        "defaultValue": {
-          "var1": "value1",
-          "var2": "value2",
-          "var3": "value3"
-        }
-      },
       "modelAssetName": {
         "type": "string"
       },
       "modelAssetVersion": {
         "type": "string",
         "defaultValue": "1"
-      },
-      "modelMountPath": {
-        "type": "string",
-        "defaultValue": "",
-        "metadata": {
-          "description": "The path to mount the model in custom container."
-        }
       },
       "endpointComputeType": {
         "type": "string",
@@ -96,133 +81,6 @@
         "defaultValue": "",
         "metadata": {
           "description": "Compute instance type."
-        }
-      },
-      "livenessProbeFailureThreshold": {
-        "type": "int",
-        "defaultValue": 30,
-        "metadata": {
-          "description": "The number of failures to allow before returning an unhealthy status."
-        }
-      },
-      "livenessProbeSuccessThreshold": {
-        "type": "int",
-        "defaultValue": 1,
-        "metadata": {
-          "description": "The number of successful probes before returning a healthy status."
-        }
-      },
-      "livenessProbeInitialDelay": {
-        "type": "string",
-        "defaultValue": "PT0S",
-        "metadata": {
-          "description": "The delay before the first probe in ISO 8601 format."
-        }
-      },
-      "livenessProbePeriod": {
-        "type": "string",
-        "defaultValue": "PT10S",
-        "metadata": {
-          "description": "The length of time between probes in ISO 8601 format."
-        }
-      },
-      "livenessProbeTimeout": {
-        "type": "string",
-        "defaultValue": "PT2S",
-        "metadata": {
-          "description": "The probe timeout in ISO 8601 format."
-        }
-      },
-      "readinessProbeFailureThreshold": {
-        "type": "int",
-        "defaultValue": 30,
-        "metadata": {
-          "description": "The number of failures to allow before returning an unhealthy status."
-        }
-      },
-      "readinessProbeSuccessThreshold": {
-        "type": "int",
-        "defaultValue": 1,
-        "metadata": {
-          "description": "The number of successful probes before returning a healthy status."
-        }
-      },
-      "readinessProbeInitialDelay": {
-        "type": "string",
-        "defaultValue": "PT0S",
-        "metadata": {
-          "description": "The delay before the first probe in ISO 8601 format."
-        }
-      },
-      "readinessProbePeriod": {
-        "type": "string",
-        "defaultValue": "PT10S",
-        "metadata": {
-          "description": "The length of time between probes in ISO 8601 format."
-        }
-      },
-      "readinessProbeTimeout": {
-        "type": "string",
-        "defaultValue": "PT2S",
-        "metadata": {
-          "description": "The probe timeout in ISO 8601 format."
-        }
-      },
-      "requestSettingsMaxConcurrentRequestsPerInstance": {
-        "type": "int",
-        "defaultValue": 1,
-        "metadata": {
-          "description": "The number of maximum concurrent requests per node allowed per deployment. Defaults to 1."
-        }
-      },
-      "requestSettingsMaxQueueWait": {
-        "type": "string",
-        "defaultValue": "PT0.5S",
-        "metadata": {
-          "description": "The maximum amount of time a request will stay in the queue in ISO 8601 format. Defaults to 500ms."
-        }
-      },
-      "requestSettingsTimeout": {
-        "type": "string",
-        "defaultValue": "PT5S",
-        "metadata": {
-          "description": "The scoring timeout in ISO 8601 format. Defaults to 5000ms"
-        }
-      },
-      "scaleSettingsScaleType": {
-        "type": "string",
-        "allowedValues": [
-          "Default",
-          "TargetUtilization"
-        ],
-        "defaultValue": "Default"
-      },
-      "targetUtilizationPollingInterval": {
-        "type": "string",
-        "defaultValue": "PT1S",
-        "metadata": {
-          "description": "The polling interval in ISO 8691 format. Only supports duration with precision as low as seconds."
-        }
-      },
-      "targetUtilizationPercentage": {
-        "type": "int",
-        "defaultValue": 70,
-        "metadata": {
-          "description": "Target CPU usage for the autoscaler."
-        }
-      },
-      "targetUtilizationPercentageMinInstances": {
-        "type": "int",
-        "defaultValue": 1,
-        "metadata": {
-          "description": "The minimum number of instances to always be present."
-        }
-      },
-      "targetUtilizationPercentageMaxInstances": {
-        "type": "int",
-        "defaultValue": 1,
-        "metadata": {
-          "description": "The maximum number of instances that the deployment can scale to. The quota will be reserved for max instances."
         }
       },
       "skuName": {
