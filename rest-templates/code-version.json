@@ -56,7 +56,7 @@
   "outputs": {
     "codeVersionResourceId": {
       "type": "string",
-      "value": "[resourceId('Microsoft.MachineLearningServices/workspaces/codes/versions', parameters('workspaceName'), parameters('codeAssetName'), parameters('codeAssetVersion'))]",
+      "value": "[resourceId('Microsoft.MachineLearningServices/workspaces/codes/versions', parameters('workspaceName'), parameters('codeAssetName'), parameters('codeAssetVersion'))]"
     }
   }
 }
