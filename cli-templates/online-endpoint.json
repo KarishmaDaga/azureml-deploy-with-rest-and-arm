@@ -51,23 +51,7 @@
           "tag3": "value3"
         },
         "type": "object"
-      },
-      "computeName": {
-        "defaultValue": "",
-        "type": "string"
-      },
-      "traffic": {
-        "defaultValue": {
-          "blue": 100
-        },
-        "type": "object",
-        "metadata": {
-          "description": "Percentage of traffic from endpoint to divert to each deployment. Traffic values need to sum to 100."
-        }
       }
-    },
-    "variables": {
-      "computeResourceId": "[resourceId('Microsoft.MachineLearningServices/workspaces/computes', parameters('workspaceName'), parameters('computeName'))]"
     },
     "resources": [
       {

@@ -8,6 +8,9 @@
         "description": "Specifies the name of the Azure Machine Learning Workspace which will contain this compute."
       }
     },
+    "location": {
+      "type": "string"
+    },
     "codeAssetName": {
       "type": "string",
       "metadata": {
